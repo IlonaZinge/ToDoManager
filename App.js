@@ -31,7 +31,7 @@ export default function App() {
       <Button
         title="Add"
         onPress={handleAddTodo}
-        color="hotpink" // Change the button color to hot pink
+        color="hotpink" 
       />
       <StatusBar style="auto" />
     </View>
