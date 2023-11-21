@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import trashIcon from './images/trash.png';
 
 export default function App() {
   const [newTodo, setNewTodo] = useState('');
   const [todos, setTodos] = useState([]);
+  const [selectedTodo, setSelectedTodo] = useState(null);
 
   const handleAddTodo = () => {
     if (newTodo.trim() !== '') {
@@ -13,14 +15,15 @@ export default function App() {
     }
   };
 
+  const handleDeleteTodo = (indexToDelete) => {
+    const updatedTodos = todos.filter((_, index) => index !== indexToDelete);
+    setTodos(updatedTodos);
+    setSelectedTodo(null);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>My To-Do List</Text>
-      {todos.map((todo, index) => (
-        <Text key={index} style={styles.todoText}>
-          {todo}
-        </Text>
-      ))}
 
       <TextInput
         placeholder="Enter a to-do item"
@@ -33,6 +36,18 @@ export default function App() {
         onPress={handleAddTodo}
         color="hotpink" 
       />
+      <View style={styles.container}>
+            {todos.map((todo, index) => (
+        <Text key={index} style={styles.todoText}>
+          <Button
+          title="Delete"
+          onPress={() => handleDeleteTodo(index)}
+          color="hotpink"
+        />
+          {todo}
+        </Text>
+      ))}
+      </View>
       <StatusBar style="auto" />
     </View>
   );
