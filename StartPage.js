@@ -35,7 +35,7 @@ export default function App() {
       <View style={[styles.loadContainer, styles.horizontal]}>
       {loading ? (
         <View>
-          <ActivityIndicator size="large" color="#0000ff" />
+          <ActivityIndicator size="large" color="#ffffff" />
         </View>
       ) : (
         <TouchableOpacity onPress={titlePress} style={styles.startButton}>
