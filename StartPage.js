@@ -9,10 +9,10 @@ import {
 
 export default function App() {
   const titlePress = () => {
-    console.log("Click on titel -> start app"); // Start App -> navigation to main page
+    console.log("Click on title -> start app"); // Start App -> navigation to main page
   };
 
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
